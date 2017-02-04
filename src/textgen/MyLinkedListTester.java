@@ -22,6 +22,7 @@ public class MyLinkedListTester {
 	MyLinkedList<Integer> emptyList;
 	MyLinkedList<Integer> longerList;
 	MyLinkedList<Integer> list1;
+	MyLinkedList<Integer> l2;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -43,7 +44,8 @@ public class MyLinkedListTester {
 		list1.add(21);
 		list1.add(42);
 		
-	}
+		l2 = new MyLinkedList<Integer>();
+		}
 
 	
 	/** Test if the get method is working correctly.
@@ -54,6 +56,7 @@ public class MyLinkedListTester {
 	public void testGet()
 	{
 		//test empty list, get should throw an exception
+		
 		try {
 			emptyList.get(0);
 			fail("Check out of bounds");
@@ -64,6 +67,7 @@ public class MyLinkedListTester {
 		
 		// test short list, first contents, then out of bounds
 		assertEquals("Check first", "A", shortList.get(0));
+	//	System.out.println(shortList.get(0));
 		assertEquals("Check second", "B", shortList.get(1));
 		
 		try {
@@ -123,7 +127,26 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddEnd()
 	{
-        // TODO: implement this test
+		try {
+			emptyList.add(null);
+			fail("Check out of bounds");
+		}
+		catch (NullPointerException e) {
+			
+		}
+		try {
+			shortList.add(null);
+			fail("Check out of bounds");
+		}
+		catch (NullPointerException e) {
+			
+		}
+		
+		// test short list, first contents, then out of bounds
+		assertEquals("Check first", "A", shortList.get(0));
+		assertEquals("Check second", "B", shortList.get(1));
+		
+	
 		
 	}
 
@@ -132,7 +155,9 @@ public class MyLinkedListTester {
 	@Test
 	public void testSize()
 	{
-		// TODO: implement this test
+		assertEquals("Check size", 0, emptyList.size());
+		assertEquals("Check size", 2, shortList.size());
+		assertEquals("Check size", 0, l2.size());
 	}
 
 	
@@ -144,7 +169,36 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddAtIndex()
 	{
-        // TODO: implement this test
+		try {
+			shortList.add(0, null);
+			fail("Check invalid element");
+		}
+		catch (NullPointerException e) {
+		
+		}
+		
+		try {
+			shortList.add(2, "C");
+			fail("Check out of bounds");
+		}
+		catch (IndexOutOfBoundsException e) {
+		
+		}
+		try {
+			longerList.add(-1, 10);
+			fail("Check out of bounds");
+		}
+		catch (IndexOutOfBoundsException e) {
+		
+		}
+		
+		
+		l2.add(0);
+		l2.add(12);
+		l2.add(4);
+		l2.add(2, 24);
+		assertEquals("Check second", (Integer)12, l2.get(1));
+		assertEquals("Check fourth", (Integer)24, l2.get(2));  
 		
 	}
 	
