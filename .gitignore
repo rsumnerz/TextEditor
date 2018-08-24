@@ -1,0 +1,3 @@
+/build
+/lib/resty/auto-ssl/vendor/*
+/t/run
